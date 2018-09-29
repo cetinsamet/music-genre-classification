@@ -3,6 +3,8 @@ np.random.seed(123)
 import pandas as pd
 import pickle
 from sklearn.utils import shuffle
+from sklearn.preprocessing import LabelEncoder
+
 
 class Set():
 
@@ -11,6 +13,7 @@ class Set():
         self.valid_set  = None
         self.test_set   = None
         self.data       = data
+        self.le         = LabelEncoder().fit(self.data.GENRES)
         print("\n-> Set() object is initialized.")
 
     def make_dataset(self):
@@ -35,23 +38,29 @@ class Set():
 
     def get_train_set(self):
         x_train = np.stack(self.train_set['spectrogram'].values)
+        x_train = np.reshape(x_train, (x_train.shape[0], 1, x_train.shape[1], x_train.shape[2]))
         y_train = np.stack(self.train_set['genre'].values)
+        y_train = self.le.transform(y_train)
         print("x_train shape: ", x_train.shape)
         print("y_train shape: ", y_train.shape)
         return x_train, y_train
 
     def get_valid_set(self):
         x_valid = np.stack(self.valid_set['spectrogram'].values)
+        x_valid = np.reshape(x_valid, (x_valid.shape[0], 1, x_valid.shape[1], x_valid.shape[2]))
         y_valid = np.stack(self.valid_set['genre'].values)
+        y_valid = self.le.transform(y_valid)
         print("x_valid shape: ", x_valid.shape)
         print("y_valid shape: ", y_valid.shape)
         return x_valid, y_valid
 
     def get_test_set(self):
-        x_test = np.stack(self.test_set['spectrogram'].values)
-        y_test = np.stack(self.test_set['genre'].values)
-        print("x_test shape: ", x_test.shape)
-        print("y_test shape: ", y_test.shape)
+        x_test  = np.stack(self.test_set['spectrogram'].values)
+        x_test  = np.reshape(x_test, (x_test.shape[0], 1, x_test.shape[1], x_test.shape[2]))
+        y_test  = np.stack(self.test_set['genre'].values)
+        y_test  = self.le.transform(y_test)
+        print("x_test shape : ", x_test.shape)
+        print("y_test shape : ", y_test.shape)
         return x_test, y_test
 
     def save(self):
@@ -63,5 +72,5 @@ class Set():
     def load(self):
         with open('../utils/set.pkl', 'rb') as infile:
             (self.train_set, self.valid_set, self.test_set) = pickle.load(infile)
-        print("-> Set() object is loaded.")
+        print("-> Set() object is loaded.\n")
         return
