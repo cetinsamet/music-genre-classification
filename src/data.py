@@ -10,11 +10,11 @@ from librosa.display import specshow
 
 
 class Data():
-    raw_data    = None
 
     def __init__(self, genres, datapath):
-        self.GENRES      = genres
-        self.DATAPATH    = datapath
+        self.raw_data   = None
+        self.GENRES     = genres
+        self.DATAPATH   = datapath
         print("\n-> Data() object is initialized.")
 
     def make_raw_data(self):
