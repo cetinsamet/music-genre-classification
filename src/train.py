@@ -2,14 +2,10 @@ import torch
 torch.manual_seed(123)
 from torch.autograd import Variable
 
-import matplotlib.pyplot as plt
-
-from config import GENRES
-from config import DATAPATH
+from config import GENRES, DATAPATH, MODELPATH
+from model import genreNet
 from data import Data
 from set import Set
-from model import genreNet
-from tqdm import tqdm
 
 
 def main():
@@ -99,7 +95,7 @@ def main():
     # ------------------------------------------------------------------------------------------------- #
     ## SAVE GENRENET MODEL
     # ------------------------------------------------------------------------------------------------- #
-    torch.save(net.state_dict(), '../utils/net.pt')
+    torch.save(net.state_dict(), MODELPATH)
     print('-> ptorch model is saved.')
     # ------------------------------------------------------------------------------------------------- #
 
