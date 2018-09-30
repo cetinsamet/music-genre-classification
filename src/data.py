@@ -8,7 +8,7 @@ from librosa.feature import melspectrogram
 from librosa import power_to_db
 from librosa.display import specshow
 
-
+from config import RAW_DATAPATH
 class Data():
 
     def __init__(self, genres, datapath):
@@ -37,13 +37,13 @@ class Data():
         return
 
     def save(self):
-        with open('../utils/raw_data.pkl', 'wb') as outfile:
+        with open(RAW_DATAPATH, 'wb') as outfile:
             pickle.dump(self.raw_data, outfile, pickle.HIGHEST_PROTOCOL)
         print('-> Data() object is saved.\n')
         return
 
     def load(self):
-        with open('../utils/raw_data.pkl', 'rb') as infile:
+        with open(RAW_DATAPATH, 'rb') as infile:
             self.raw_data   = pickle.load(infile)
         print("-> Data() object is loaded.")
         return
