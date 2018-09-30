@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 from sklearn.utils import shuffle
 from sklearn.preprocessing import LabelEncoder
-
+import json
 
 class Set():
 
@@ -23,9 +23,9 @@ class Set():
         train_records, valid_records, test_records = list(), list(), list()
         for i, genre in enumerate(self.data.GENRES):
             genre_df    = df[df['genre'] == genre]
-            train_records.append(genre_df.iloc[:600].values)
-            valid_records.append(genre_df.iloc[600:800].values)
-            test_records.append(genre_df.iloc[800:].values)
+            train_records.append(genre_df.iloc[:700].values)
+            valid_records.append(genre_df.iloc[700:900].values)
+            test_records.append(genre_df.iloc[900:].values)
 
         train_records   = shuffle([record for genre_records in train_records    for record in genre_records])
         valid_records   = shuffle([record for genre_records in valid_records    for record in genre_records])
