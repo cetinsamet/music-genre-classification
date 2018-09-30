@@ -1,6 +1,6 @@
 import torch
 torch.manual_seed(123)
-from torch.nn import Module, Conv2d, MaxPool2d, Linear, Dropout
+from torch.nn import Module, Conv2d, MaxPool2d, Linear, Dropout, BatchNorm2d
 import torch.nn.functional as F
 
 
@@ -11,28 +11,30 @@ class genreNet(Module):
 
         self.conv1  = Conv2d(in_channels=1,     out_channels=64,    kernel_size=3,  stride=1,   padding=1)
         torch.nn.init.xavier_uniform(self.conv1.weight)
-        self.bn1    = torch.nn.BatchNorm2d(64)
+        self.bn1    = BatchNorm2d(64)
         self.pool1  = MaxPool2d(kernel_size=2)
 
         self.conv2  = Conv2d(in_channels=64, out_channels=128,      kernel_size=3,  stride=1,   padding=1)
         torch.nn.init.xavier_uniform(self.conv2.weight)
-        self.bn2    = torch.nn.BatchNorm2d(128)
+        self.bn2    = BatchNorm2d(128)
         self.pool2  = MaxPool2d(kernel_size=2)
 
-        self.conv3 = Conv2d(in_channels=128, out_channels=256,      kernel_size=3,  stride=1,   padding=1)
+        self.conv3  = Conv2d(in_channels=128, out_channels=256,      kernel_size=3,  stride=1,   padding=1)
         torch.nn.init.xavier_uniform(self.conv3.weight)
-        self.bn3    = torch.nn.BatchNorm2d(256)
-        self.pool3 = MaxPool2d(kernel_size=4)
+        self.bn3    = BatchNorm2d(256)
+        self.pool3  = MaxPool2d(kernel_size=4)
 
-        self.conv4 = Conv2d(in_channels=256, out_channels=512,      kernel_size=3,  stride=1,   padding=1)
+        self.conv4  = Conv2d(in_channels=256, out_channels=512,      kernel_size=3,  stride=1,   padding=1)
         torch.nn.init.xavier_uniform(self.conv4.weight)
-        self.bn4    = torch.nn.BatchNorm2d(512)
-        self.pool4 = MaxPool2d(kernel_size=4)
+        self.bn4    = BatchNorm2d(512)
+        self.pool4  = MaxPool2d(kernel_size=4)
 
         self.fc1    = Linear(in_features=2048,  out_features=1024)
         self.drop1  = Dropout(0.5)
+
         self.fc2    = Linear(in_features=1024,  out_features=256)
         self.drop2  = Dropout(0.5)
+
         self.fc3    = Linear(in_features=256,   out_features=10)
 
     def forward(self, inp):
