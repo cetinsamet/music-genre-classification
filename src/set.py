@@ -17,6 +17,7 @@ class Set():
         self.test_set   = None
         self.data       = data
         self.le         = LabelEncoder().fit(self.data.GENRES)
+
         print("\n-> Set() object is initialized.")
 
     def make_dataset(self):
