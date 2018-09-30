@@ -1,10 +1,13 @@
+import pandas as pd
 import numpy as np
 np.random.seed(123)
-import pandas as pd
 import pickle
-from sklearn.utils import shuffle
+
 from sklearn.preprocessing import LabelEncoder
-import json
+from sklearn.utils import shuffle
+
+from config import SET_DATAPATH
+
 
 class Set():
 
@@ -64,13 +67,13 @@ class Set():
         return x_test, y_test
 
     def save(self):
-        with open('../utils/set.pkl', 'wb') as outfile:
+        with open(SET_DATAPATH, 'wb') as outfile:
             pickle.dump((self.train_set, self.valid_set, self.test_set), outfile, pickle.HIGHEST_PROTOCOL)
         print("-> Set() object is saved.\n")
         return
 
     def load(self):
-        with open('../utils/set.pkl', 'rb') as infile:
+        with open(SET_DATAPATH, 'rb') as infile:
             (self.train_set, self.valid_set, self.test_set) = pickle.load(infile)
         print("-> Set() object is loaded.\n")
         return
