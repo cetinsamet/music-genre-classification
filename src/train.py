@@ -29,6 +29,7 @@ def main():
     set_ = Set(data)
     set_.load()
 
+
     x_train, y_train    = set_.get_train_set()
     x_valid, y_valid    = set_.get_valid_set()
     x_test,  y_test     = set_.get_test_set()
