@@ -9,6 +9,8 @@ from librosa import power_to_db
 from librosa.display import specshow
 
 from config import RAW_DATAPATH
+
+
 class Data():
 
     def __init__(self, genres, datapath):
