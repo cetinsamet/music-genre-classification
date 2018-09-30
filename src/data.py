@@ -6,7 +6,6 @@ import os
 from librosa.core import load
 from librosa.feature import melspectrogram
 from librosa import power_to_db
-from librosa.display import specshow
 
 from config import RAW_DATAPATH
 
