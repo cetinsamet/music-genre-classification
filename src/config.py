@@ -11,4 +11,7 @@ GENRES      = [ 'blues',
                 'rock'  ]
 
 # DEFINE PATHS
-DATAPATH    =   '../data/'
+DATAPATH        =   '../data/'
+RAW_DATAPATH    =   '../utils/raw_data.pkl'
+SET_DATAPATH    =   '../utils/set.pkl'
+MODELPATH       =   '../utils/net.pt'
