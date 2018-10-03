@@ -12,8 +12,8 @@ $**python3**  get_genre.py  input-audio-path
 ### Example  
 $**cd**  src  
 $**python3**  get_genre.py  ../test.mp3  
-**--> disco**:   80.56%  
-**--> rock**: 	  11.11%  
-**--> reggae**:  8.33	%  
+**--> disco**: 62.50%  
+**--> rock**:  35.42%  
+**--> reggae**: 2.08	%  
    
 Test audio (test.mp3) is a disco song, **Every 1's A Winner** by **Hot Chocolate**. (*https://open.spotify.com/track/5MXXbGYNmRHR7ULMvZYo5R?si=yk6GzvJiS--7hZuGd8awog*)   
