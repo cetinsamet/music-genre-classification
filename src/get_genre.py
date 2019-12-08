@@ -45,9 +45,9 @@ def main(argv):
         data    = torch.FloatTensor(data).view(1, 1, 128, 128)
         preds   = net(data)
         pred_val, pred_index    = preds.max(1)
-        pred_index              = pred_index.data.numpy()[0]
+        pred_index              = pred_index.data.numpy()
         pred_val                = np.exp(pred_val.data.numpy()[0])
-        pred_genre              = le.inverse_transform(pred_index)
+        pred_genre              = le.inverse_transform(pred_index).item()
         if pred_val >= 0.5:
             genres.append(pred_genre)
     # ------------------------------- #

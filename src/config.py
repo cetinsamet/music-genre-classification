@@ -14,4 +14,4 @@ GENRES      = [ 'blues',
 DATAPATH        =   '../data/'
 RAW_DATAPATH    =   '../utils/raw_data.pkl'
 SET_DATAPATH    =   '../utils/set.pkl'
-MODELPATH       =   '../utils/net.pt'
+MODELPATH       =   '../model/net.pt'
